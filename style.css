@@ -369,3 +369,18 @@ footer{padding:30px 5vw;border-top:1px solid var(--line);display:flex;justify-co
 }
 
 .community-label{display:inline-block;margin-bottom:16px;font-size:8px;letter-spacing:2.5px;color:#bbb;border:1px solid #3a3a3a;padding:8px 12px;background:rgba(0,0,0,.28)}
+
+.vip-ticket{position:relative;border-color:rgba(225,6,19,.65)!important;background:linear-gradient(145deg,#170707,#0b0b0b)!important;box-shadow:0 0 35px rgba(225,6,19,.08)}
+.vip-ticket:before{content:"VIP";position:absolute;right:18px;top:16px;font-family:"Barlow Condensed";font-weight:800;font-size:34px;color:rgba(225,6,19,.18);letter-spacing:2px}
+.vip-ticket .shop-card-badge{color:#fff;background:#b80010;border:1px solid #e10613}
+.vip-ticket .shop-price{color:#fff;font-family:"Barlow Condensed";font-size:38px;font-weight:800;margin:12px 0}
+.vip-ticket .shop-features{padding-left:18px;color:#aaa;line-height:1.8;font-size:10px}
+.vip-ticket .shop-buy{border-color:#e10613;background:#e10613;color:#fff}
+
+
+/* Dynamic live-chat message animation */
+@keyframes chatIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fan-chat-messages .chat-message { animation: chatIn .22s ease-out; }

@@ -391,115 +391,197 @@ if (insiderGrid) {
 }
 
 /* =========================================================
-   TALBLICK FAN CHAT — 120 fictional messages, 70% critical
+   TALBLICK FAN CHAT — dynamischer Live-Demo-Chat
+   Es existiert ein großer Nachrichten-Pool, aber IMMER nur 2
+   Nachrichten gleichzeitig. Neue Nachricht kommt zufällig alle 1–4 Sek.
    ========================================================= */
-const fanChat = document.getElementById('fanChat');
-const fanChatToggle = document.getElementById('fanChatToggle');
-const fanChatClose = document.getElementById('fanChatClose');
-const fanChatMessages = document.getElementById('fanChatMessages');
-const chatUnread = document.getElementById('chatUnread');
+(function(){
+  function initFanChat(){
+    const fanChat = document.getElementById('fanChat');
+    const fanChatToggle = document.getElementById('fanChatToggle');
+    const fanChatClose = document.getElementById('fanChatClose');
+    const fanChatMessages = document.getElementById('fanChatMessages');
+    const chatUnread = document.getElementById('chatUnread');
+    if (!fanChat || !fanChatMessages) return;
 
-if (fanChat && fanChatMessages) {
-  const chatUsers = [
-    'AarMax','Lahnkicker92','Tobi_ProClubs','Michi1908','KatzenbergKid',
-    'EinrichTom','NilsFan','Sanremo_Stand','RheinLahnDave','AarTal',
-    'ProClubSven','Modric22','LiLegacy','LahnFan','TaunusTom',
-    'TalblickOpa','FCFan2004','GoalHunter','KeeperChris','RedBlackFan'
-  ];
+    // 120 Demo-Nachrichten als Pool. Sie werden NICHT alle angezeigt.
+    const chatMessages = [
+      ['AarMax','0 Spiele und schon wird über Transfers geredet 😂','mean'],
+      ['NilsFan','Ich warte immer noch auf euer erstes Match! 🔥','fan'],
+      ['Lahnkicker92','Daniel für 300k? Wer zahlt das bitte? 😂','mean'],
+      ['Sanremo_Stand','Sanremo Park sieht brutal aus.','fan'],
+      ['Tobi_ProClubs','Der Transfermarkt macht mehr Spiele als ihr. 😂','mean'],
+      ['RedBlackFan','Team sieht stark aus. Viel Erfolg für FC27!','fan'],
+      ['KatzenbergKid','Ilija für 1,2 Mio? Träumt weiter.','mean'],
+      ['AarTal','Ich feier das ganze Konzept.','fan'],
+      ['EinrichTom','0:0 ist aktuell eure stärkste Statistik 😂','mean'],
+      ['FCFan2004','Freue mich auf das erste Match!','fan'],
+      ['Modric22','Noch kein Spiel und schon Insider-News 😂','mean'],
+      ['LahnFan','Viel Erfolg an den ganzen Kader!','fan'],
+      ['GoalHunter','Diese Marktwerte sind ja komplett wild.','mean'],
+      ['TalblickOpa','Die roten Trikots sehen stark aus.','fan'],
+      ['ProClubSven','Bitte einmal echte Ergebnisse statt Fake-Markt.','mean'],
+      ['KeeperChris','Coole Website!','fan'],
+      ['TaunusTom','Tobias muss die 800k erstmal auf dem Platz beweisen.','mean'],
+      ['RheinLahnDave','Ich bin gespannt auf die ersten Statistiken.','fan'],
+      ['LahnFan','Ihr seid entweder genial oder komplett verrückt. 😂','mean'],
+      ['Sanremo_Stand','Hall of Fame mit Modric und Li ist nice.','fan'],
+      ['AarUnited','Wer hat Daniel überhaupt gescoutet? 😂','mean'],
+      ['ChrisFan','Ich will endlich das erste FC27-Spiel sehen.','fan'],
+      ['NassauTom','1,2 Mio für Ilija ist mutig.','mean'],
+      ['TalblickGirl','Das Stadiondesign gefällt mir richtig gut.','fan'],
+      ['LahnBoy','Noch kein Spiel, aber schon Millionenwerte 😂','mean'],
+      ['RedStorm','Bin gespannt auf die Saison.','fan'],
+      ['Dorsbach99','Der Marktwert von Daniel ist noch großzügig. 😂','mean'],
+      ['ProClubLeo','Kommt bald der erste Spielbericht?','fan'],
+      ['Katzenberg11','Tobias 800k? Erstmal Tore schießen.','mean'],
+      ['SanremoFan','Heimtrikot sieht richtig stark aus.','fan'],
+      ['AarMax','Ihr habt mehr Insider als Spiele. 😂','mean'],
+      ['FCBasti','Viel Erfolg Jungs!','fan'],
+      ['Lahnkicker','Kristijan 700k ist auch interessant.','mean'],
+      ['TalblickSupport','Bin seit Tag 1 dabei.','fan'],
+      ['TaunusChris','0:0 als Bilanz ist schon legendär.','mean'],
+      ['RedBlack24','Freue mich auf die ersten Ergebnisse.','fan'],
+      ['Einrich04','Werden Transfers eigentlich wirklich abgelehnt? 😂','mean'],
+      ['LahnSupport','Starkes Projekt, weiter so!','fan'],
+      ['AarScout','Leon für 1,05 Mio? Ganz schön teuer.','mean'],
+      ['SanremoKid','Das Stadion könnte voll werden.','fan'],
+      ['ProClubMax','Bitte nicht wieder nur Trainingslager 😂','mean'],
+      ['TalblickFan','Ich bin gespannt auf eure Formation.','fan'],
+      ['KatzenbergKid','Daniel hat den Marktwert seines Lebens.','mean'],
+      ['FCStorm','Gute Saison euch!','fan'],
+      ['LahnTom','Der Transfermarkt ist jetzt schon spannender als die Liga. 😂','mean'],
+      ['RedBlackFan','Das Logo sieht brutal aus.','fan'],
+      ['AarLukas','Wann gibt es endlich ein 1:0? 😂','mean'],
+      ['TalblickOpa','Ich schaue jedes Update.','fan'],
+      ['NassauFC','Zdravko 900k muss erstmal bestätigt werden.','mean'],
+      ['ChrisFan','Community sieht schon gut aus.','fan'],
+      ['ProClubSven','Vielleicht erstmal spielen bevor ihr Marktwerte verteilt. 😂','mean'],
+      ['LahnFan','Ich gönne euch eine starke Saison.','fan'],
+      ['AarMax','Wer hat diese Preise erfunden? 😂','mean'],
+      ['Sanremo_Stand','VIP-Ticket für 160? Was gibt es da alles?','fan'],
+      ['EinrichTom','Die Spielerwerte sind komplett ausgedacht 😂','mean'],
+      ['TalblickGirl','Ich mag den schwarzen Look der Seite.','fan'],
+      ['Lahnkicker92','Nils für 500k klingt nach Schnäppchen.','mean'],
+      ['FCFan2004','Bin auf die ersten Statistiken gespannt.','fan'],
+      ['TaunusTom','Ilija muss erstmal liefern für 1,2 Mio.','mean'],
+      ['RedStorm','Das wird eine interessante Saison.','fan'],
+      ['AarTal','Ihr habt echt einen eigenen Transfermarkt gebaut 😂','mean'],
+      ['ProClubLeo','Ich hoffe auf viele Spiele dieses Jahr.','fan'],
+      ['Katzenberg11','Daniel würde ich für 300k sofort verkaufen. 😂','mean'],
+      ['SanremoFan','Das Sanremo Park sieht cool aus.','fan'],
+      ['LahnBoy','Warum hat der Transfermarkt schon Bewegung? 😂','mean'],
+      ['TalblickSupport','Coole Idee mit dem Live-Chat.','fan'],
+      ['AarUnited','Tobias 800k ist sportlich bewertet.','mean'],
+      ['FCBasti','Viel Erfolg beim FC27 Neustart!','fan'],
+      ['RheinLahnDave','Kristijan könnte überraschen.','fan'],
+      ['ProClubMax','Noch keine Spiele und trotzdem Markt-News 😂','mean'],
+      ['TalblickFan','Ich bleibe hier für die Updates.','fan'],
+      ['NassauTom','Leon muss die Millionen erstmal rechtfertigen.','mean'],
+      ['RedBlack24','Das neue FC27 Kapitel kann kommen.','fan'],
+      ['Lahnkicker','Wer ist eigentlich euer bester Spieler?','fan'],
+      ['AarScout','Ich sage Ilija ist überbewertet. 😂','mean'],
+      ['SanremoKid','Stadion + Trikot = starkes Gesamtpaket.','fan'],
+      ['Dorsbach99','0 Spiele, 0 Niederlagen. Perfekte Saison. 😂','mean'],
+      ['FCStorm','Genau solche Seiten braucht Pro Clubs.','fan'],
+      ['TaunusChris','Wann kommt endlich die erste Niederlage? 😂','mean'],
+      ['LahnSupport','Viel Erfolg an alle Spieler!','fan'],
+      ['Einrich04','Der Markt braucht einen Daniel-Absturz. 😂','mean'],
+      ['TalblickOpa','Schönes Vereinsprojekt.','fan'],
+      ['AarMax','Modric und Li in der Hall of Fame? Okay 😂','mean'],
+      ['ChrisFan','Die Historie gefällt mir.','fan'],
+      ['KatzenbergKid','700k für Kristijan? Mutig.','mean'],
+      ['RedBlackFan','Ich will das erste Match sehen!','fan'],
+      ['LahnFan','Das wird lustig mit diesem Kader. 😂','mean'],
+      ['ProClubSven','Bitte Matchberichte nicht vergessen.','fan'],
+      ['NassauFC','Zdravko könnte einer der wichtigsten Spieler sein.','fan'],
+      ['AarLukas','Daniel auf dem Markt? Ich biete 50k. 😂','mean'],
+      ['Sanremo_Stand','Die Vereinsseite wirkt richtig professionell.','fan'],
+      ['TalblickGirl','Das Auswärtstrikot gefällt mir.','fan'],
+      ['LahnBoy','500k für Nils? Wer hat das berechnet? 😂','mean'],
+      ['FCFan2004','Ich freue mich auf die Saison.','fan'],
+      ['TaunusTom','Ich glaube Tobias wird viele Tore machen.','fan'],
+      ['AarTal','Der Marktwert von Daniel sinkt bestimmt noch 😂','mean'],
+      ['RedStorm','Hoffentlich gibt es bald Ergebnisse.','fan'],
+      ['EinrichTom','Ihr braucht erstmal einen Sieg bevor ihr Millionen verteilt. 😂','mean'],
+      ['LahnSupport','Ich drücke euch die Daumen.','fan'],
+      ['Katzenberg11','Der Chat ist besser als manche Bundesliga-Liveticker. 😂','mean'],
+      ['TalblickFan','Weiter so!','fan'],
+      ['ProClubLeo','Ilija wird die Saison rocken.','fan'],
+      ['AarUnited','Oder komplett floppen 😂','mean'],
+      ['SanremoFan','Ich mag die Vereinsfarben.','fan'],
+      ['NassauTom','Chris für 600k? Interessant.','mean'],
+      ['FCStorm','Bin gespannt wer am Ende die meisten Tore hat.','fan'],
+      ['Lahnkicker92','Ich tippe Tobias.','fan'],
+      ['RedBlack24','Ich tippe auf Ilija.','fan'],
+      ['Dorsbach99','Ich tippe Daniel auf der Bank. 😂','mean'],
+      ['TalblickOpa','Hauptsache alle haben Spaß.','fan'],
+      ['AarMax','Dieser Chat eskaliert noch 😂','mean'],
+      ['ChrisFan','Ich komme später wieder.','fan'],
+      ['KatzenbergKid','Die Konkurrenz wird euch beobachten.','mean'],
+      ['LahnFan','Gute Stimmung hier!','fan'],
+      ['ProClubMax','Ich will endlich Transfergerüchte mit echten Namen 😂','mean'],
+      ['SanremoKid','Das kommt bestimmt noch.','fan'],
+      ['TaunusChris','FC Talblick gegen Lahnkicker wäre interessant.','fan'],
+      ['AarScout','Ihr seid noch ungeschlagen! 😂','mean'],
+      ['RedBlackFan','Das ist technisch gesehen korrekt. 😂','fan'],
+      ['Einrich04','Noch kein Spiel heißt noch kein Problem.','mean'],
+      ['TalblickSupport','FC27 Neustart, jetzt geht es los.','fan'],
+      ['LahnBoy','Ich beobachte den Marktwert von Daniel. 😂','mean'],
+      ['FCFan2004','Ich beobachte Tobias.','fan'],
+      ['NassauFC','Ich beobachte Zdravko.','fan'],
+      ['AarTal','Ich beobachte alle.','fan'],
+      ['Sanremo_Stand','Der Chat lebt.','fan']
+    ];
 
-  const meanTexts = [
-    '0 Spiele und schon wird über Transfers geredet 😂',
-    'Daniel für 300k? Wer zahlt das bitte?',
-    'Ihr braucht erstmal ein Spiel, bevor ihr eine Dynastie seid.',
-    'Der Sanremo Park ist größer als eure aktuelle Statistik.',
-    'Diese Marktwerte sind ja komplett wild.',
-    'Ilija für 1,2 Mio? Träumt weiter.',
-    'Noch kein Spiel und schon 100 Insider-News 😂',
-    'Wer hat euch eigentlich die Lizenz gegeben? Spaß 😄',
-    'Ich warte immer noch auf euren ersten Sieg.',
-    'Kader sieht gut aus, aber jetzt müsst ihr auch spielen.',
-    'Der Transfermarkt macht mehr Spiele als ihr.',
-    '0:0 ist aktuell eure stärkste Statistik.',
-    'Sanremo Park ausverkauft bei 0 Spielen? 😂',
-    'Ich glaube Daniel würde sogar als Keeper spielen.',
-    'Diese Angebote werden ja schneller abgelehnt als sie kommen.',
-    'Marktwert runter, Jungs. Der Hype ist vorbei. 😅',
-    'FC Talblick FC 27: erstmal Menü-Meister.',
-    'Ich will Ergebnisse sehen, keine Gerüchte.',
-    'Katzenelnbogen wird euch schon zeigen, wo der Hammer hängt.',
-    'Ganz ehrlich: Ich bin gespannt, ob ihr die 1. Partie gewinnt.',
-    'Eure Transferzentrale ist größer als der Kader.',
-    'Bitte einmal echte Ergebnisse statt Fake-Markt.',
-    'Ilija ist teuer, aber liefert er auch?',
-    'Tobias für 830k? Dafür muss er aber Tore schießen.',
-    'Nils 490k? Der Markt ist verrückt.',
-    'Kristijan 680k klingt nach einem riskanten Investment.',
-    'Noch keine Niederlage! Aber auch kein Spiel. 😂',
-    'Ihr seid entweder genial oder komplett verrückt.',
-    'Ich komme wegen der Kommentare und bleibe wegen der News.',
-    'Die roten Pfeile tun weh.',
-    'Wer auch immer den Markt programmiert hat: gemein.',
-    '0 Spiele, 100 Meldungen. Prioritäten stimmen. 😂',
-    'Transferangebot abgelehnt. Natürlich. Immer.',
-    'Ihr habt mehr Insider als Punkte.',
-    'Wann kommt endlich ein echtes Match?',
-    'Der Chat ist härter als jeder Gegner.'
-  ];
+    let nextIndex = 0;
+    let visible = [];
+    let timer = null;
 
-  const fanTexts = [
-    'Seit 2020 dabei – bin gespannt auf FC27! 🔥',
-    'Team sieht stark aus. Viel Erfolg für die Saison!',
-    'Sanremo Park sieht brutal aus.',
-    'Ich feier das ganze Konzept.',
-    'Ilija wird diese Saison liefern.',
-    'Tobias als Stürmer könnte richtig gefährlich werden.',
-    'Kristijan im ZDM ist wichtig für die Balance.',
-    'Zdravko als Allrounder ist Gold wert.',
-    'Freue mich auf das erste Match!',
-    'Modric und Li gehören in die Hall of Fame. ❤️',
-    'Schönes Vereinsdesign!',
-    'Die roten Trikots sehen stark aus.',
-    'Endlich wieder FC Talblick!',
-    'Lasst euch Zeit und baut die Saison sauber auf.',
-    'Ich tippe auf Ilija als Spieler der Saison.',
-    'Sanremo Park, wir sehen uns!',
-    'Viel Erfolg an den ganzen Kader!',
-    'Die Transfer-News sind lustig gemacht.',
-    'Bleibt zusammen, keine Transfers! 😂',
-    'FC Talblick 2027 – auf gehts!',
-    'Bin gespannt auf die ersten Statistiken.',
-    'Coole Website!',
-    'Hall of Fame mit den 2022-Spielern ist nice.',
-    'Teamgeist vor Marktwert. ❤️',
-    'Das wird eine gute Saison.'
-  ];
+    function render(){
+      fanChatMessages.innerHTML = visible.map(m => `
+        <div class="chat-message ${m.type}">
+          <div class="chat-user">${m.user}</div>
+          <div class="chat-text">${m.message}</div>
+        </div>
+      `).join('');
+      fanChatMessages.scrollTop = fanChatMessages.scrollHeight;
+      if (chatUnread && !fanChat.classList.contains('open')) chatUnread.textContent = String(Math.min(9, visible.length));
+    }
 
-  const allMessages = [];
-  const target = 120;
-  for (let i=0;i<target;i++) {
-    const mean = i < 84; // exactly 70% critical
-    const pool = mean ? meanTexts : fanTexts;
-    const user = chatUsers[i % chatUsers.length];
-    const text = pool[(i * 7 + Math.floor(i/3)) % pool.length];
-    allMessages.push({user, text, type: mean ? 'mean' : 'fan'});
+    function addMessage(){
+      const m = chatMessages[nextIndex % chatMessages.length];
+      nextIndex++;
+      visible.push({user:m[0], message:m[1], type:m[2]});
+      // HARTE REGEL: niemals mehr als 2 Nachrichten gleichzeitig.
+      if (visible.length > 2) visible.shift();
+      render();
+      scheduleNext();
+    }
+
+    function scheduleNext(){
+      if (timer) clearTimeout(timer);
+      // zufälliger Abstand: 1–4 Sekunden
+      const delay = 1000 + Math.floor(Math.random() * 3001);
+      timer = window.setTimeout(addMessage, delay);
+    }
+
+    // Beim Öffnen erscheinen nur 2 Nachrichten. Danach 1 neue Nachricht alle 1–4 Sek.
+    visible = [
+      {user:chatMessages[0][0], message:chatMessages[0][1], type:chatMessages[0][2]},
+      {user:chatMessages[1][0], message:chatMessages[1][1], type:chatMessages[1][2]}
+    ];
+    nextIndex = 2;
+    render();
+    scheduleNext();
+
+    fanChatToggle?.addEventListener('click',()=>{
+      fanChat.classList.add('open');
+      if(chatUnread) chatUnread.textContent='0';
+    });
+    fanChatClose?.addEventListener('click',()=>fanChat.classList.remove('open'));
   }
 
-  // Shuffle deterministically so the 70/30 mix doesn't look grouped.
-  for (let i=allMessages.length-1;i>0;i--) {
-    const j = (i * 37 + 11) % (i+1);
-    [allMessages[i], allMessages[j]] = [allMessages[j], allMessages[i]];
-  }
-
-  fanChatMessages.innerHTML = allMessages.map(m => `
-    <div class="chat-message ${m.type}">
-      <div class="chat-user">${m.user}</div>
-      <div class="chat-text">${m.text}</div>
-    </div>
-  `).join('');
-
-  fanChatToggle?.addEventListener('click', () => {
-    fanChat.classList.add('open');
-    if (chatUnread) chatUnread.textContent = '0';
-  });
-  fanChatClose?.addEventListener('click', () => fanChat.classList.remove('open'));
-}
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initFanChat);
+  else initFanChat();
+})();
