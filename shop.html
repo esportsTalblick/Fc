@@ -77,7 +77,21 @@
         <div class="roster-note">NUR VORBESTELLUNG</div>
       </div>
 
-      <div class="shop-grid">
+      
+      <div class="shop-card vip-ticket">
+        <div class="shop-card-badge">VIP · SAN REMO HQ</div>
+        <h3>VIP MATCHDAY</h3>
+        <p class="shop-price">€ 160</p>
+        <p class="shop-desc">VIP-Zugang zum San Remo HQ am Spieltag – inklusive Shisha-Lounge.</p>
+        <ul class="shop-features">
+          <li>VIP-Ticket für den Spieltag</li>
+          <li>Zugang zum San Remo HQ</li>
+          <li>Shisha inklusive</li>
+          <li>Fiktive Vorbestellung · keine echte Zahlung</li>
+        </ul>
+        <button class="shop-buy" onclick="demoPurchase('VIP Matchday · San Remo HQ', 160)">VIP VORBESTELLEN · €160</button>
+      </div>
+<div class="shop-grid">
         <article class="shop-product">
           <img src="assets/heimtrikot.jpg" alt="FC Talblick Heimtrikot">
           <div><span>HEIMTRIKOT</span><strong>49,99 €</strong></div>
@@ -131,5 +145,11 @@
     <span>FIKTIVER FANSHOP · KEINE ZAHLUNG</span>
   </footer>
   <script src="script.js"></script>
+
+<script>
+function demoPurchase(item, price){
+  alert('Vorbestellung gespeichert!\\n\\n' + item + '\\n€ ' + price + '\\n\\nKeine Zahlung – dies ist nur eine Demo.');
+}
+</script>
 </body>
 </html>
