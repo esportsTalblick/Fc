@@ -34,6 +34,7 @@
       <a href="news.html">NEWS</a>
       <a href="shop.html">SHOP</a>
       <a href="#community">COMMUNITY</a>
+    <a href="#insider">INSIDER</a>
       <a href="#kontakt">KONTAKT</a>
     </nav>
     <button class="nav-toggle" aria-label="Menü öffnen">☰</button>
@@ -49,6 +50,7 @@
     <a href="shop.html">SHOP</a>
     <a href="#trikot">TRIKOT</a>
     <a href="#community">COMMUNITY</a>
+    <a href="#insider">INSIDER</a>
     <a href="#bewerbung">BEWERBEN</a>
     <a href="#kontakt">KONTAKT</a>
   </div>
@@ -250,6 +252,32 @@
       </div>
     </section>
 
+
+    <section id="insider" class="section insider-section">
+      <div class="section-heading-row">
+        <div>
+          <span class="eyebrow">09 · TALBLICK INSIDER</span>
+          <h2>TRANSFER<br><em>GERÜCHTE</em></h2>
+        </div>
+        <div class="roster-note"><span class="market-live-dot"></span> SAMSTAGS-UPDATE</div>
+      </div>
+
+      <div class="insider-headline">
+        <div>
+          <span class="tag">TRANSFER INSIDER · FIKTION</span>
+          <h3>„ANGEBOT ABGELEHNT.“</h3>
+          <p>Jedes Wochenende erscheinen neue fiktive Gerüchte, Spieler-Updates und Angebote. FC Talblick lehnt in unserer Storyline aktuell jedes Angebot anderer Teams ab.</p>
+        </div>
+        <div class="insider-next"><span>NÄCHSTES UPDATE</span><strong id="insiderCountdown">SAMSTAG · --:--:--</strong></div>
+      </div>
+
+      <div class="insider-grid" id="insiderGrid"></div>
+      <div class="insider-footer">
+        <span>100 FIKTIVE INSIDER-MELDUNGEN</span>
+        <span>ALLE ANGEBOTE ABGELEHNT · FC TALBLICK BLEIBT ZUSAMMEN</span>
+      </div>
+    </section>
+
     <section class="manifesto">
       <div class="manifesto-bg"></div>
       <div class="manifesto-content">
@@ -334,5 +362,22 @@
   </footer>
 
   <script src="script.js?v=4.2"></script>
+
+  <aside class="fan-chat" id="fanChat" aria-label="Talblick Live Chat">
+    <button class="fan-chat-toggle" id="fanChatToggle">
+      <span class="chat-dot"></span>
+      TALBLICK CHAT <b id="chatUnread">7</b>
+    </button>
+    <div class="fan-chat-panel">
+      <div class="fan-chat-header">
+        <div><strong>LIVE CHAT</strong><span>FANZONE · FIKTION</span></div>
+        <button id="fanChatClose" aria-label="Chat schließen">×</button>
+      </div>
+      <div class="fan-chat-note">Automatisch generierter Demo-Chat. Die Namen und Nachrichten sind fiktiv.</div>
+      <div class="fan-chat-messages" id="fanChatMessages"></div>
+      <div class="fan-chat-footer"><span>● LIVE</span><small>120 DEMO-NACHRICHTEN</small></div>
+    </div>
+  </aside>
+
 </body>
 </html>
