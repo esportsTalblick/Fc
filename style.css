@@ -313,3 +313,8 @@ footer{padding:30px 5vw;border-top:1px solid var(--line);display:flex;justify-co
 .top-nav-buttons a{font-size:8px;letter-spacing:1.4px;color:#aaa;text-decoration:none;border:1px solid #303030;padding:9px 13px;transition:.2s}
 .top-nav-buttons a:hover{color:#fff;border-color:var(--red);background:rgba(225,6,19,.1)}
 @media(max-width:600px){.top-nav-buttons{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.top-nav-buttons::-webkit-scrollbar{display:none}.top-nav-buttons a{white-space:nowrap}}
+
+.market-countdown{display:inline-block;margin-left:12px;color:#aaa;font-size:8px;letter-spacing:1.5px}
+.market-countdown b{color:#fff}
+.market-live-dot{animation:marketPulse .8s infinite, marketBlink 1.1s infinite}
+@keyframes marketBlink{0%,100%{opacity:1}50%{opacity:.35}}
