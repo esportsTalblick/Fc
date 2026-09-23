@@ -281,10 +281,13 @@ footer{padding:30px 5vw;border-top:1px solid var(--line);display:flex;justify-co
  .match-dashboard div:nth-child(4),.match-dashboard div:nth-child(5){border-top:1px solid var(--line)}
 }
 @media(max-width:600px){
- .market-row{grid-template-columns:28px 1fr 85px}
- .market-row .market-change{display:none}
+ .market-row{grid-template-columns:28px minmax(0,1fr) 82px 58px}
+ .market-row .market-time{display:none}
+ .market-row .market-change{display:block;font-size:13px}
  .market-row.header{display:none}
- .market-value{font-size:18px}
+ .market-player strong{font-size:20px}
+ .market-player span{font-size:7px}
+ .market-value{font-size:17px}
  .legend-card{grid-template-columns:55px 70px 1fr;gap:10px}
  .legend-badge{width:60px;height:60px;font-size:28px}
  .match-dashboard{grid-template-columns:1fr 1fr}
@@ -294,3 +297,19 @@ footer{padding:30px 5vw;border-top:1px solid var(--line);display:flex;justify-co
  .kit-preview{min-height:390px}
  .kit-preview img{height:350px}
 }
+
+.market-live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#20d66b;margin-right:8px;box-shadow:0 0 0 0 rgba(32,214,107,.7);animation:marketPulse 1.25s infinite}
+.market-change.up,.market-euro.up{color:#20d66b}
+.market-change.down,.market-euro.down{color:#ff3345}
+.market-change{font-weight:800}
+.market-euro{display:block;font-size:10px;letter-spacing:.7px;margin-top:3px;font-family:Inter,sans-serif}
+.market-row.flash-up{animation:marketFlashUp .8s ease}
+.market-row.flash-down{animation:marketFlashDown .8s ease}
+@keyframes marketPulse{70%{box-shadow:0 0 0 7px rgba(32,214,107,0)}100%{box-shadow:0 0 0 0 rgba(32,214,107,0)}}
+@keyframes marketFlashUp{0%{background:rgba(32,214,107,.16)}100%{background:transparent}}
+@keyframes marketFlashDown{0%{background:rgba(255,51,69,.16)}100%{background:transparent}}
+.market-update-copy{font-size:8px;letter-spacing:1.4px;color:#777;margin-top:7px}
+.top-nav-buttons{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:12px 18px;border-bottom:1px solid var(--line);background:rgba(7,7,7,.96);position:sticky;top:0;z-index:60;backdrop-filter:blur(12px)}
+.top-nav-buttons a{font-size:8px;letter-spacing:1.4px;color:#aaa;text-decoration:none;border:1px solid #303030;padding:9px 13px;transition:.2s}
+.top-nav-buttons a:hover{color:#fff;border-color:var(--red);background:rgba(225,6,19,.1)}
+@media(max-width:600px){.top-nav-buttons{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.top-nav-buttons::-webkit-scrollbar{display:none}.top-nav-buttons a{white-space:nowrap}}

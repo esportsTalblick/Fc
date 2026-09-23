@@ -137,17 +137,20 @@ if(marketTable){
   const rows = market.players.map((p,i) => {
     const cls = p.change > 0 ? 'up' : p.change < 0 ? 'down' : 'flat';
     const arrow = p.change > 0 ? '▲' : p.change < 0 ? '▼' : '—';
-    const pct = p.change ? Math.abs(p.change / (p.value - p.change) * 100).toFixed(1) : '0.0';
-    return `<div class="market-row">
+    const oldValue = p.value - p.change;
+    const signedEuro = p.change > 0 ? `+€ ${Math.abs(p.change/1000).toFixed(0)} Tsd.` : p.change < 0 ? `−€ ${Math.abs(p.change/1000).toFixed(0)} Tsd.` : '€ 0';
+    const pct = p.change ? Math.abs(p.change / oldValue * 100).toFixed(1) : '0.0';
+    return `<div class="market-row ${cls !== 'flat' ? `flash-${cls}` : ''}">
       <div class="market-rank">${String(i+1).padStart(2,'0')}</div>
       <div class="market-player"><strong>${p.name}</strong><span>${p.pos}</span></div>
-      <div class="market-value">${fmt(p.value)}</div>
+      <div class="market-value">${fmt(p.value)}<span class="market-euro ${cls}">${signedEuro}</span></div>
       <div class="market-change ${cls}">${arrow} ${pct}%</div>
       <div class="market-time">STÜNDLICH</div>
     </div>`;
   }).join('');
   marketTable.innerHTML = `<div class="market-row header"><div>#</div><div>SPIELER</div><div>MARKTWERT</div><div>CHANGE</div><div>UPDATE</div></div>${rows}`;
-  if(marketStatus) marketStatus.textContent = 'LIVE · DEMO · UPDATE JE STUNDE';
+  marketTable.insertAdjacentHTML('afterend','<div class="market-update-copy">Der Live-Markt aktualisiert sich jede volle Stunde dynamisch. Grün zeigt einen Wertzuwachs, Rot einen Wertverlust. Die Euro-Differenz zeigt, wie viel Marktwert der Spieler dazugewonnen oder verloren hat.</div>');
+  if(marketStatus) marketStatus.innerHTML = '<span class="market-live-dot"></span>LIVE · DEMO · UPDATE JE STUNDE';
 }
 
 const kitName = document.getElementById('kitName');
