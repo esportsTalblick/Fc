@@ -306,7 +306,14 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .news-is-new{border-color:#66521c!important;box-shadow:inset 3px 0 0 var(--gold)}
 .menu-grid>button{position:relative;min-height:68px}
 .menu-new{position:absolute;top:7px;right:7px;padding:3px 5px;border-radius:999px;background:var(--gold);color:#111;font-size:7px;font-weight:1000}
-.nav-game-card{position:relative;display:grid;gap:10px}.nav-game-card>img{display:block;width:100%;aspect-ratio:16/7;object-fit:cover;object-position:center;border-radius:12px;border:1px solid #2b3f48;background:#05090c}.nav-game-copy{display:grid;gap:4px}.nav-game-copy>strong{font-size:18px;letter-spacing:.03em}.nav-game-copy>p{margin:0;color:var(--muted);font-size:10px;line-height:1.35}.nav-game-card .gold-btn{margin-top:2px}.launch-news-intro{display:grid;gap:10px}.launch-news-cover{display:grid;gap:5px;text-align:center;padding:8px;border:1px solid #263a43;border-radius:11px;background:#071017}.launch-news-cover img{display:block;width:100%;max-height:150px;object-fit:cover;border-radius:8px}.launch-news-cover span{font-size:9px;color:var(--green);font-weight:900;letter-spacing:.12em}.launch-news-list{display:grid;gap:8px}.launch-news-item{display:grid;grid-template-columns:38px 1fr;gap:8px;padding:9px;border:1px solid #26363c;border-radius:10px;background:#0a141a}.launch-news-item p{margin:3px 0 7px;color:#8e999d;font-size:10px;line-height:1.3}.launch-news-item .ghost-btn{min-height:34px;padding:7px 9px;font-size:9px}.news-modal-full{display:grid;gap:9px}.news-modal-full h3{margin:0;font-size:20px}.news-modal-full p{margin:0;color:#9aa6aa;line-height:1.45;font-size:12px}.news-modal-full small{color:#687579;font-size:9px}
+.nav-cover-card{position:relative;display:grid;gap:10px}
+.nav-cover-card>img{display:block;width:100%;aspect-ratio:16/7;object-fit:cover;object-position:center;border-radius:12px;border:1px solid #2b3f48;background:#05090c}
+.nav-cover-copy{display:grid;gap:4px}
+.nav-cover-copy>strong{font-size:18px;letter-spacing:.03em}
+.nav-cover-copy>p{margin:0;color:var(--muted);font-size:10px;line-height:1.35}
+.nav-cover-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.nav-cover-actions .gold-btn,.nav-cover-actions .ghost-btn{margin:0;min-height:44px}
+.nav-cover-actions .new-badge{font-size:7px;padding:2px 5px}
 .prematch-cover{display:grid;gap:10px;margin-bottom:10px}
 .prematch-cover img{width:100%;aspect-ratio:16/7;object-fit:cover;border-radius:12px;border:1px solid #2b3f48}
 .prematch-cover div{display:grid;gap:3px}

@@ -11,8 +11,8 @@
 (() => {
   'use strict';
 
-  const APP_KEY = 'streetKingsSaveV23';
-  const APP_VERSION = '23.0.0';
+  const APP_KEY = 'streetKingsSaveV22';
+  const APP_VERSION = '22.0.0';
   const WEEKLY_RESET_KEY = 'streetKingsWeeklyResetV20';
   const LEGACY_KEYS = ['streetKingsSaveV15','streetKingsSaveV14','streetKingsSaveV13','streetKingsSaveV12','streetKingsSaveV11','streetKingsSaveV10','streetKingsSaveV9','streetKingsSaveV8','streetKingsSaveV7','streetKingsSaveV6','streetKingsSaveV5','streetKingsSaveV4','streetKingsSaveV3','streetKingsSaveV2','streetKingsSave'];
   const $ = (s, r = document) => r.querySelector(s);
@@ -101,7 +101,7 @@
 
   const state = {
     version:'16.0.0', firstRun:true, teamChosen:false, pendingTeamId:null, introStage:'welcome', manager:'Manager', active:'home', season:1, week:1,
-    date:new Date('2026-08-15T18:00:00'), userTeamId:null, teams:{}, leagues:{}, market:[], coaches:[], news:[], newsUnread:true, newsIntroSeen:false,
+    date:new Date('2026-08-15T18:00:00'), userTeamId:null, teams:{}, leagues:{}, market:[], coaches:[], news:[], newsUnread:true,
     friendlies:[], transferOffers:[], transferInquiries:[], incomingOffers:[], incomingOffersCooldown:0, coachContacts:[], coachHistory:[], _coachPulse:0, _marketPulse:0, lastSavedAt:null, marketFilter:'all', calendarLeague:'all', selectedTeamFilter:'all', contractInbox:[], draftHistory:[], gamesSinceDraft:0, freeGoldDraftUsed:false, tactic:'1-2-2', tactics:{pressing:62,risk:50,tempo:58,passing:56}, notifications:2,
     trophies:0, fans:77, lastMatch:null, liveMatch:null, lineupPositions:{}
   };
@@ -109,7 +109,7 @@
   function blankState(){
     return {
       version:APP_VERSION, firstRun:true, teamChosen:false, pendingTeamId:null, introStage:'club', manager:'Manager', active:'home', season:1, week:1,
-      date:new Date('2026-08-15T18:00:00'), userTeamId:null, teams:{}, leagues:{}, market:[], coaches:[], news:[], newsUnread:true, newsIntroSeen:false,
+      date:new Date('2026-08-15T18:00:00'), userTeamId:null, teams:{}, leagues:{}, market:[], coaches:[], news:[], newsUnread:true,
       friendlies:[], transferOffers:[], transferInquiries:[], incomingOffers:[], incomingOffersCooldown:0, coachContacts:[], coachHistory:[], _coachPulse:0, _marketPulse:0, lastSavedAt:null, marketFilter:'all', calendarLeague:'all', selectedTeamFilter:'all', contractInbox:[], draftHistory:[], gamesSinceDraft:0, freeGoldDraftUsed:false, tactic:'1-2-2', tactics:{pressing:62,risk:50,tempo:58,passing:56}, notifications:2,
       trophies:0, fans:77, lastMatch:null, liveMatch:null, lineupPositions:{}
     };
@@ -389,7 +389,7 @@
     Object.values(state.teams||{}).forEach(t=>{t.logo=clubLogoForTeam(t)||('assets/clubs/'+slugify(t.name)+'.png');});
     if(state.teamChosen && state.teams && !state.teams[state.userTeamId]) state.userTeamId=null;
     if(!state.teamChosen) state.userTeamId=null;
-    state.market=Array.isArray(state.market)?state.market:generateMarket(48); if(state.market.length<48) state.market=generateMarket(48); state.coaches=Array.isArray(state.coaches)?state.coaches:generateCoaches(); if(state.coaches.length<150) state.coaches=generateCoaches(); state.transferOffers=Array.isArray(state.transferOffers)?state.transferOffers:[]; state.transferInquiries=Array.isArray(state.transferInquiries)?state.transferInquiries:[]; state.incomingOffers=Array.isArray(state.incomingOffers)?state.incomingOffers:[]; state.incomingOffersCooldown=Number(state.incomingOffersCooldown||0); state.contractInbox=Array.isArray(state.contractInbox)?state.contractInbox:[]; state.draftHistory=Array.isArray(state.draftHistory)?state.draftHistory:[]; state.gamesSinceDraft=Number(state.gamesSinceDraft||0); state.freeGoldDraftUsed=!!state.freeGoldDraftUsed; state.calendarLeague=state.calendarLeague||'all'; state.lastSavedAt=state.lastSavedAt||null; state.teamChosen = !!state.teamChosen; state.fans = state.fans || 77; state.news=Array.isArray(state.news)?state.news:[]; state.newsIntroSeen=!!state.newsIntroSeen; state.friendlies=Array.isArray(state.friendlies)?state.friendlies:[];
+    state.market=Array.isArray(state.market)?state.market:generateMarket(48); if(state.market.length<48) state.market=generateMarket(48); state.coaches=Array.isArray(state.coaches)?state.coaches:generateCoaches(); if(state.coaches.length<150) state.coaches=generateCoaches(); state.transferOffers=Array.isArray(state.transferOffers)?state.transferOffers:[]; state.transferInquiries=Array.isArray(state.transferInquiries)?state.transferInquiries:[]; state.incomingOffers=Array.isArray(state.incomingOffers)?state.incomingOffers:[]; state.incomingOffersCooldown=Number(state.incomingOffersCooldown||0); state.contractInbox=Array.isArray(state.contractInbox)?state.contractInbox:[]; state.draftHistory=Array.isArray(state.draftHistory)?state.draftHistory:[]; state.gamesSinceDraft=Number(state.gamesSinceDraft||0); state.freeGoldDraftUsed=!!state.freeGoldDraftUsed; state.calendarLeague=state.calendarLeague||'all'; state.lastSavedAt=state.lastSavedAt||null; state.teamChosen = !!state.teamChosen; state.fans = state.fans || 77; state.news=Array.isArray(state.news)?state.news:[]; state.friendlies=Array.isArray(state.friendlies)?state.friendlies:[];
     state.pendingTeamId=state.pendingTeamId||null; if(state.teamChosen){state.firstRun=false;state.introStage='done';state.pendingTeamId=null;} else {state.introStage=state.introStage||'welcome';} state.coachContacts=Array.isArray(state.coachContacts)?state.coachContacts:[]; state.coachHistory=Array.isArray(state.coachHistory)?state.coachHistory:[]; state._coachPulse=Number(state._coachPulse||0); state._marketPulse=Number(state._marketPulse||0);
     ensureManagerSystems();
     state.date=new Date(state.date||Date.now());
@@ -844,19 +844,10 @@
   function renderMore(){
     const items=[['news','news','News'],['transfers','transfers','Transfers'],['offers','news','Spielerangebote'],['contracts','contracts','Verträge'],['overview','club','Vereine'],['calendar','games','Kalender'],['tactics','tactics','Taktik'],['league','league','Liga'],['sponsors','sponsors','Sponsoren'],['stadium','stadium','Arena'],['finances','finances','Finanzen'],['stats','stats','Statistiken'],['draft','draft','Draft'],['coaches','coaches','Coaches'],['city','city','Stadt'],['settings','settings','Einstellungen']];
     return `${pageHead('Navigation','Alle Manager-Systeme')}
-      ${card('SPIEL · NAVIGATION',`<div class="nav-game-card"><img src="assets/screens/cover-talblick-mobile.jpg" alt="STREET KINGS MANAGER · Spiel"><div class="nav-game-copy"><div class="section-kicker">SPIELTAG · FC TALBLICK</div><strong>LIVE SIMULATION</strong><p>Hier findest du dein nächstes Spiel. Öffne den Spielebereich und starte die Partie von dort.</p></div><button class="gold-btn wide" data-page="games">⚽ SPIEL ÖFFNEN</button></div>`)}
+      ${card('SPIEL · NAVIGATION',`<div class="nav-cover-card"><img src="assets/screens/cover-talblick-mobile.jpg" alt="STREET KINGS MANAGER"><div class="nav-cover-copy"><div class="section-kicker">STREET KINGS · KATZENELNBOGEN</div><strong>SMALL TOWN · BIG DREAMS</strong><p>Das Cover ist jetzt direkt in der Navigation sichtbar. Von hier kannst du sofort zum nächsten Spiel oder zu den News springen.</p></div><div class="nav-cover-actions"><button class="gold-btn" data-page="games">⚽ SPIELEN</button><button class="ghost-btn" data-page="news">📰 NEWS ${state.newsUnread?'<span class="new-badge">NEU</span>':''}</button></div></div>`)}
       ${card(`MENÜ ${state.newsUnread?'<span class="new-badge">NEWS NEU</span>':''}`,`<div class="menu-grid">${items.map(([k,i,l])=>`<button data-page="${k}"><span>${emoji(i)}</span><b>${l}</b>${k==='news'&&state.newsUnread?'<span class="menu-new">NEU</span>':''}</button>`).join('')}</div>`)}
-      ${card('REGION',`<div class="region-card"><strong>Katzenelnbogen</strong><span>Aar-Einrich · Rhein-Lahn · Untertaunus</span><p>Scouting, Sponsoren und Gegner kommen aus der Region und wachsen mit deinem Verein.</p></div>`)};`;
+      ${card('REGION',`<div class="region-card"><strong>Katzenelnbogen</strong><span>Aar-Einrich · Rhein-Lahn · Untertaunus</span><p>Scouting, Sponsoren und Gegner kommen aus der Region und wachsen mit deinem Verein.</p></div>`)}`;
   }
-
-  function showNewsLaunchPopup(){
-    if(!state.teamChosen || state.newsIntroSeen || state.liveMatch) return;
-    const items=(state.news||[]).slice(0,2);
-    if(!items.length){state.newsIntroSeen=true;saveState();return;}
-    const body=`<div class="launch-news-intro"><div class="launch-news-cover"><img src="assets/branding/logo-main.png" alt="STREET KINGS MANAGER"><span>AKTUELLE MELDUNGEN · FC TALBLICK</span></div><div class="launch-news-list">${items.map((n,i)=>`<article class="launch-news-item"><div class="news-thumb ${n.kind}">${n.kind==='market'?'↔':n.kind==='stadium'?'▤':n.kind==='result'?'⚽':'✦'}</div><div><div class="news-line-title"><strong>${esc(n.title)}</strong>${n.isNew?'<span class="new-badge">NEU</span>':''}</div><p>${esc(n.body)}</p><button class="ghost-btn" data-news-read="${i}">WEITER LESEN</button></div></article>`).join('')}</div><button class="gold-btn wide" data-news-go-navigation>WEITER · ZUR NAVIGATION</button></div>`;
-    openModal('AKTUELLE NEWS',body,{kicker:'START · NEWS'});
-  }
-
 
 
   function renderPage(){
@@ -956,7 +947,7 @@
     state.teamChosen=true; state.firstRun=false; state.introStage='done'; state.pendingTeamId=null; state.active='home';
     saveState();
     render();
-    setTimeout(()=>{toast('CLUB GEWÄHLT',`${t.name} · ${t.city}`); showNewsLaunchPopup();},80);
+    setTimeout(()=>toast('CLUB GEWÄHLT',`${t.name} · ${t.city}`),40);
   }
 
   function openPlayer(id){
@@ -1714,7 +1705,7 @@
   function bindGlobal(){
     let lastActionEl=null,lastActionAt=0;
     const dispatchAction=(e)=>{
-      const el=e.target.closest?.('[data-page],[data-bottom],[data-simulate],[data-close],[data-save-stadium],[data-welcome],[data-player],[data-sell],[data-buy],[data-bid],[data-watch],[data-tactic],[data-marketfilter],[data-market-refresh],[data-sponsor],[data-upgrade],[data-credit],[data-export],[data-import],[data-reset],[data-new-game-flow],[data-confirm-reset],[data-draft],[data-draft-index],[data-coach],[data-firecoach],[data-settings-save],[data-select-team],[data-club-continue],[data-add-game],[data-create-friendly],[data-notify],[data-news-go-navigation],[data-news-read],[data-fixture],[data-rename-stadium],[data-offer-player],[data-inquire-player],[data-trade-player],[data-send-offer],[data-send-inquiry],[data-intro-next],[data-accept-counter],[data-incoming-accept],[data-incoming-reject],[data-renew-contract],[data-confirm-renew],[data-accept-renew-counter],[data-confirm-hire-coach],[data-accept-coach-counter],[data-team-overview],[data-start-match],[data-calendar-league],[data-repay-credit]');      if(e.target.closest?.('.team-select-card,[data-club-continue],[data-new-game-flow],[data-reset],[data-confirm-reset],[data-close],.close-btn')) return;
+      const el=e.target.closest?.('[data-page],[data-bottom],[data-simulate],[data-close],[data-save-stadium],[data-welcome],[data-player],[data-sell],[data-buy],[data-bid],[data-watch],[data-tactic],[data-marketfilter],[data-market-refresh],[data-sponsor],[data-upgrade],[data-credit],[data-export],[data-import],[data-reset],[data-new-game-flow],[data-confirm-reset],[data-draft],[data-draft-index],[data-coach],[data-firecoach],[data-settings-save],[data-select-team],[data-club-continue],[data-add-game],[data-create-friendly],[data-notify],[data-fixture],[data-rename-stadium],[data-offer-player],[data-inquire-player],[data-trade-player],[data-send-offer],[data-send-inquiry],[data-intro-next],[data-accept-counter],[data-incoming-accept],[data-incoming-reject],[data-renew-contract],[data-confirm-renew],[data-accept-renew-counter],[data-confirm-hire-coach],[data-accept-coach-counter],[data-team-overview],[data-start-match],[data-calendar-league],[data-repay-credit]');      if(e.target.closest?.('.team-select-card,[data-club-continue],[data-new-game-flow],[data-reset],[data-confirm-reset],[data-close],.close-btn')) return;
       if(!el)return;
       const now=Date.now();
       if(lastActionEl===el && now-lastActionAt<700)return;
@@ -1768,7 +1759,7 @@
   }
 
   function handleClick(e){
-    const el=e.target.closest('[data-page],[data-bottom],[data-simulate],[data-close],[data-save-stadium],[data-welcome],[data-player],[data-sell],[data-buy],[data-bid],[data-watch],[data-tactic],[data-marketfilter],[data-market-refresh],[data-sponsor],[data-upgrade],[data-credit],[data-export],[data-import],[data-reset],[data-new-game-flow],[data-confirm-reset],[data-draft],[data-draft-index],[data-coach],[data-firecoach],[data-settings-save],[data-select-team],[data-club-continue],[data-add-game],[data-create-friendly],[data-notify],[data-news-go-navigation],[data-news-read],[data-fixture],[data-rename-stadium],[data-offer-player],[data-inquire-player],[data-trade-player],[data-send-offer],[data-send-inquiry],[data-intro-next],[data-accept-counter],[data-incoming-accept],[data-incoming-reject],[data-renew-contract],[data-confirm-renew],[data-accept-renew-counter],[data-confirm-hire-coach],[data-accept-coach-counter],[data-team-overview],[data-start-match],[data-calendar-league],[data-repay-credit]');
+    const el=e.target.closest('[data-page],[data-bottom],[data-simulate],[data-close],[data-save-stadium],[data-welcome],[data-player],[data-sell],[data-buy],[data-bid],[data-watch],[data-tactic],[data-marketfilter],[data-market-refresh],[data-sponsor],[data-upgrade],[data-credit],[data-export],[data-import],[data-reset],[data-new-game-flow],[data-confirm-reset],[data-draft],[data-draft-index],[data-coach],[data-firecoach],[data-settings-save],[data-select-team],[data-club-continue],[data-add-game],[data-create-friendly],[data-notify],[data-fixture],[data-rename-stadium],[data-offer-player],[data-inquire-player],[data-trade-player],[data-send-offer],[data-send-inquiry],[data-intro-next],[data-accept-counter],[data-incoming-accept],[data-incoming-reject],[data-renew-contract],[data-confirm-renew],[data-accept-renew-counter],[data-confirm-hire-coach],[data-accept-coach-counter],[data-team-overview],[data-start-match],[data-calendar-league],[data-repay-credit]');
     if(!el)return;
     if(state.liveMatch)return;
     if(el.dataset.introNext){state.introStage='club';closeModal();showClubSelection();}
@@ -1818,8 +1809,6 @@
     else if(el.dataset.settingsSave){const t=currentTeam();if(!t)return;t.name=(document.querySelector('#teamName')?.value||t.name).trim()||t.name;t.stadium.name=(document.querySelector('#stadiumName')?.value||t.stadium.name).trim()||t.stadium.name;state.manager=(document.querySelector('#managerName')?.value||state.manager).trim()||'Manager';const ok=saveState();state.active='settings';renderPage();toast(ok?'Gespeichert':'Speichern fehlgeschlagen',`${t.name} · Manager: ${state.manager}`);}
     else if(el.dataset.addGame)addFriendly();
     else if(el.dataset.createFriendly)createFriendly();
-    else if(el.dataset.newsGoNavigation){state.newsIntroSeen=true;saveState();closeModal();state.active='more';renderPage();}
-    else if(el.dataset.newsRead){const n=state.news[Number(el.dataset.newsRead)];if(n){openModal(esc(n.title),`<article class="news-modal-full"><div class="news-thumb ${n.kind}">${n.kind==='market'?'↔':n.kind==='stadium'?'▤':n.kind==='result'?'⚽':'✦'}</div><h3>${esc(n.title)}</h3><p>${esc(n.body)}</p><small>${n.createdAt?dateDE(new Date(n.createdAt)):dateDE(new Date())} · ${n.createdAt?timeDE(new Date(n.createdAt)):timeDE(new Date())}</small></article>`,{kicker:'REGIONALE NEWS'});}}
     else if(el.dataset.notify){openModal('NEWS',state.news.map(n=>`<article class="news-modal"><b>${esc(n.title)}</b><span>${esc(n.body)}</span></article>`).join(''),{kicker:'REGIONALE NEWS'});}
     else if(el.dataset.fixture){const typ=el.dataset.fixtureType==='Freundschaft'?'friendly':'league';const g=findGame(el.dataset.fixture,typ);if(g&&!g.played)openPreMatch(g,typ);else toast('Spiel bereits gespielt',g?.result?`${g.result.hg}:${g.result.ag}`:'');}
     else if(el.dataset.renameStadium){openModal('ARENA UMBENENNEN',`<label class="input-label">Neuer Name<input class="text-input" id="newStadiumName" value="${esc(currentTeam().stadium.name)}"></label><button class="gold-btn wide" data-save-stadium>UMBENENNEN · 5.000 €</button>`,{kicker:'ARENA'});}
@@ -1837,6 +1826,5 @@
   if(state.teamChosen) saveState();
   render();
   bindGlobal();
-  if(state.teamChosen && !state.newsIntroSeen) setTimeout(showNewsLaunchPopup,120);
   if(!window.__weeklyResetTimer) window.__weeklyResetTimer=setInterval(checkWeeklyServerReset,30000);
 })();
