@@ -228,3 +228,69 @@ footer{padding:30px 5vw;border-top:1px solid var(--line);display:flex;justify-co
   .stadium-copy{padding:50px 7vw}
   .stadium-facts{gap:12px}
 }
+
+.transfer-section{max-width:1280px}
+.market-note{font-size:10px;color:#777;letter-spacing:.6px;margin:-18px 0 22px}
+.market-table{border:1px solid var(--line);background:#0d0d0d}
+.market-row{display:grid;grid-template-columns:60px 1.4fr 1fr 110px 100px;align-items:center;padding:17px 20px;border-bottom:1px solid var(--line);gap:15px}
+.market-row:last-child{border-bottom:0}
+.market-row.header{font-size:8px;letter-spacing:2px;color:#666;font-weight:800}
+.market-rank{font-family:"Barlow Condensed";font-size:22px;color:#666}
+.market-player strong{font-family:"Barlow Condensed";font-size:22px}
+.market-player span{display:block;font-size:8px;letter-spacing:1.5px;color:#777;margin-top:3px}
+.market-value{font-family:"Barlow Condensed";font-size:22px;text-align:right}
+.market-change{text-align:right;font-family:"Barlow Condensed";font-size:17px}
+.market-change.up{color:#25d16f}
+.market-change.down{color:#ff3844}
+.market-change.flat{color:#777}
+.market-time{text-align:right;font-size:8px;color:#666;letter-spacing:1px}
+.match-dashboard{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line)}
+.match-dashboard div{padding:30px 15px;text-align:center;border-right:1px solid var(--line)}
+.match-dashboard div:last-child{border:0}
+.match-dashboard strong{display:block;font-family:"Barlow Condensed";font-size:42px}
+.match-dashboard span{font-size:8px;letter-spacing:2px;color:#666}
+.match-empty{text-align:center;padding:55px 20px;border:1px solid var(--line);border-top:0;background:linear-gradient(120deg,#120708,#0b0b0b)}
+.match-empty h3{font-family:"Barlow Condensed";font-size:42px;margin:10px 0}
+.match-empty p{color:#777}
+.legend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.legend-card{position:relative;display:grid;grid-template-columns:75px 100px 1fr;align-items:center;gap:20px;padding:25px;background:linear-gradient(140deg,#171717,#0b0b0b);border:1px solid #292929;overflow:hidden}
+.legend-year{font-family:"Barlow Condensed";font-size:24px;color:#777}
+.legend-badge{width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Barlow Condensed";font-size:38px;font-weight:900;background:linear-gradient(145deg,#e10613,#190003);border:2px solid #555}
+.legend-card h3{font-family:"Barlow Condensed";font-size:32px;margin:0}
+.legend-card p{font-size:10px;color:#888;margin:5px 0}
+.kit-section{max-width:1100px}
+.kit-config{display:grid;grid-template-columns:1fr 1fr;gap:40px;background:#0d0d0d;border:1px solid var(--line);padding:35px}
+.kit-preview{position:relative;background:radial-gradient(circle,#252525,#0b0b0b);display:flex;justify-content:center;align-items:center;min-height:500px;overflow:hidden}
+.kit-preview img{height:440px;width:auto;object-fit:cover;filter:drop-shadow(0 25px 30px #000)}
+.kit-name-preview{position:absolute;bottom:20px;left:0;right:0;text-align:center;font-family:"Barlow Condensed";font-size:27px;letter-spacing:2px}
+.kit-form{display:flex;flex-direction:column;justify-content:center;gap:9px}
+.kit-form label{margin-top:10px}
+.kit-form .btn{margin-top:18px}
+.kit-form p{font-size:9px;color:#666}
+.community-section{max-width:1280px;margin:0 auto 100px;padding:95px 7vw;position:relative;overflow:hidden;background:linear-gradient(110deg,#150607,#090909);border:1px solid rgba(225,6,19,.3)}
+.community-section:after{content:"COMMUNITY";position:absolute;right:-20px;bottom:-60px;font-family:"Barlow Condensed";font-size:170px;font-weight:900;color:rgba(255,255,255,.025)}
+.community-inner{position:relative;z-index:2}
+.community-inner h2{font-size:clamp(60px,8vw,110px);line-height:.82;margin:15px 0}
+.community-inner p{color:#999;margin-bottom:25px}
+@media(max-width:900px){
+ .market-row{grid-template-columns:35px 1fr 95px 80px}
+ .market-row .market-time{display:none}
+ .legend-grid,.kit-config{grid-template-columns:1fr}
+ .match-dashboard{grid-template-columns:repeat(3,1fr)}
+ .match-dashboard div:nth-child(3){border-right:0}
+ .match-dashboard div:nth-child(4),.match-dashboard div:nth-child(5){border-top:1px solid var(--line)}
+}
+@media(max-width:600px){
+ .market-row{grid-template-columns:28px 1fr 85px}
+ .market-row .market-change{display:none}
+ .market-row.header{display:none}
+ .market-value{font-size:18px}
+ .legend-card{grid-template-columns:55px 70px 1fr;gap:10px}
+ .legend-badge{width:60px;height:60px;font-size:28px}
+ .match-dashboard{grid-template-columns:1fr 1fr}
+ .match-dashboard div:nth-child(2){border-right:0}
+ .match-dashboard div:nth-child(3){border-right:1px solid var(--line)}
+ .match-dashboard div:nth-child(4),.match-dashboard div:nth-child(5){border-top:1px solid var(--line)}
+ .kit-preview{min-height:390px}
+ .kit-preview img{height:350px}
+}

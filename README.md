@@ -24,3 +24,12 @@ Wenn ein Besucher kein E-Mail-Programm eingerichtet hat, kann das Formular nicht
 - News-Seite
 - Kontakt / Vorstand
 - Responsive Design für Smartphone und Desktop
+
+## Neue Demo-Funktionen
+- stündlich wechselnder fiktiver Transfermarkt (lokal im Browser)
+- Match Center
+- Hall of Fame mit Modric (2022, Kristijan) und Li (2022, Ilija)
+- Sanremo Park
+- Trikot-Konfigurator
+- Community auf Anfrage
+- Käufe zeigen nur eine Demo-Bestätigung und ziehen kein Geld ab.
