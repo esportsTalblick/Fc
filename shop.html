@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <title>Shop | FC Talblick</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="shop-page">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/fc-talblick-logo.png" alt="FC Talblick">
+      <span>FC TALBLICK</span>
+    </a>
+    <nav>
+      <a href="index.html#team">CLUB</a>
+      <a href="index.html#kader">KADER</a>
+      <a href="news.html">NEWS</a>
+      <a class="active" href="shop.html">SHOP</a>
+      <a href="index.html#kontakt">KONTAKT</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Menü öffnen">☰</button>
+  </header>
+
+  <main>
+    <section class="shop-hero">
+      <div class="shop-hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="shop-hero-content">
+        <span class="eyebrow">FC TALBLICK · SANREMO PARK</span>
+        <h1>FANS &<br><em>HEIMAT</em></h1>
+        <p>Tickets und Fanartikel – aktuell nur als fiktive Vorbestellung.</p>
+      </div>
+    </section>
+
+    <section id="tickets" class="section shop-section">
+      <div class="section-heading-row">
+        <div>
+          <span class="eyebrow">01 · SANREMO PARK</span>
+          <h2>HEIMSPIEL<br><em>TICKETS</em></h2>
+        </div>
+        <div class="roster-note">FAKE SHOP · KEINE ZAHLUNG</div>
+      </div>
+
+      <div class="ticket-layout">
+        <div class="ticket-image"><img src="assets/home-ticket.jpg" alt="FC Talblick Heimspiel Ticket"></div>
+        <div class="ticket-order">
+          <span class="tag">VORBESTELLUNG</span>
+          <h3>DEIN PLATZ IM SANREMO PARK</h3>
+          <p>Wähle deinen gewünschten Block. Der Kauf ist aktuell nicht echt – die Seite nimmt nur deine fiktive Vorbestellung auf.</p>
+          <form id="ticketForm">
+            <label for="ticketBlock">BLOCK</label>
+            <select id="ticketBlock">
+              <option>Block A · € 12</option>
+              <option>Block B · € 10</option>
+              <option>Block C · € 8</option>
+              <option>Stehplatz · € 6</option>
+            </select>
+            <label for="ticketCount">ANZAHL</label>
+            <input id="ticketCount" type="number" min="1" max="10" value="1">
+            <button class="btn btn-red" type="submit">TICKET VORBESTELLEN</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shop-section">
+      <div class="section-heading-row">
+        <div>
+          <span class="eyebrow">02 · FANSHOP</span>
+          <h2>TRIKOTS &<br><em>FANARTIKEL</em></h2>
+        </div>
+        <div class="roster-note">NUR VORBESTELLUNG</div>
+      </div>
+
+      <div class="shop-grid">
+        <article class="shop-product">
+          <img src="assets/heimtrikot.jpg" alt="FC Talblick Heimtrikot">
+          <div><span>HEIMTRIKOT</span><strong>49,99 €</strong></div>
+          <button class="shop-buy" data-product="Heimtrikot" data-price="49,99 €">VORBESTELLEN</button>
+        </article>
+        <article class="shop-product">
+          <img src="assets/auswaertstrikot.jpg" alt="FC Talblick Auswärtstrikot">
+          <div><span>AUSWÄRTSTRIKOT</span><strong>49,99 €</strong></div>
+          <button class="shop-buy" data-product="Auswärtstrikot" data-price="49,99 €">VORBESTELLEN</button>
+        </article>
+        <article class="shop-product">
+          <img src="assets/hoodie.jpg" alt="FC Talblick Hoodie">
+          <div><span>FC TALBLICK HOODIE</span><strong>39,99 €</strong></div>
+          <button class="shop-buy" data-product="Hoodie" data-price="39,99 €">VORBESTELLEN</button>
+        </article>
+        <article class="shop-product">
+          <img src="assets/fan-accessoires.jpg" alt="FC Talblick Fanartikel">
+          <div><span>FANARTIKEL</span><strong>ab 14,99 €</strong></div>
+          <button class="shop-buy" data-product="Fanartikel" data-price="ab 14,99 €">VORBESTELLEN</button>
+        </article>
+      </div>
+
+      <p class="shop-disclaimer">⚠ FIKTIVER SHOP: Keine Zahlung, kein echter Versand und keine echte Bestellung. Die Buttons dienen nur als Demo / Vorbestellung.</p>
+    </section>
+
+    <section class="shop-cta">
+      <div>
+        <span class="eyebrow">SANREMO PARK</span>
+        <h2>EIN TAL.<br><em>EIN TEAM.</em></h2>
+      </div>
+      <a class="btn btn-ghost" href="index.html">ZURÜCK ZUM CLUB →</a>
+    </section>
+  </main>
+
+  <div id="shopModal" class="shop-modal" aria-hidden="true">
+    <div class="shop-modal-box">
+      <button id="closeShopModal" class="modal-close" aria-label="Schließen">×</button>
+      <span class="tag">VORBESTELLUNG</span>
+      <h3 id="modalTitle">FC TALBLICK</h3>
+      <p id="modalText"></p>
+      <form id="preorderForm">
+        <label for="preorderEmail">E-MAIL</label>
+        <input id="preorderEmail" type="email" required placeholder="deine@email.de">
+        <button class="btn btn-red" type="submit">VORBESTELLUNG SENDEN</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <span>FC TALBLICK · SEIT 2020</span>
+    <span>FIKTIVER FANSHOP · KEINE ZAHLUNG</span>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -42,3 +42,61 @@ Viele Grüße`
     window.location.href = `mailto:ESportTalblick@gmail.com?subject=${subject}&body=${body}`;
   });
 }
+
+const shopModal = document.getElementById('shopModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalText = document.getElementById('modalText');
+const closeShopModal = document.getElementById('closeShopModal');
+
+document.querySelectorAll('.shop-buy').forEach(button => {
+  button.addEventListener('click', () => {
+    if(!shopModal) return;
+    const product = button.dataset.product;
+    const price = button.dataset.price;
+    modalTitle.textContent = product;
+    modalText.textContent = `${product} · ${price}. Dies ist nur eine fiktive Vorbestellung – es findet keine Zahlung und kein Versand statt.`;
+    shopModal.classList.add('open');
+    shopModal.setAttribute('aria-hidden','false');
+  });
+});
+
+if(closeShopModal && shopModal){
+  closeShopModal.addEventListener('click', () => {
+    shopModal.classList.remove('open');
+    shopModal.setAttribute('aria-hidden','true');
+  });
+  shopModal.addEventListener('click', (e) => {
+    if(e.target === shopModal){
+      shopModal.classList.remove('open');
+      shopModal.setAttribute('aria-hidden','true');
+    }
+  });
+}
+
+const preorderForm = document.getElementById('preorderForm');
+if(preorderForm){
+  preorderForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('preorderEmail').value.trim();
+    const product = modalTitle ? modalTitle.textContent : 'Fanartikel';
+    const subject = encodeURIComponent(`FC Talblick Vorbestellung – ${product}`);
+    const body = encodeURIComponent(
+      `Hallo FC Talblick,\n\nich möchte den folgenden Artikel fiktiv vorbestellen:\n\nArtikel: ${product}\nE-Mail: ${email}\n\nHinweis: Dies ist eine Demo-Vorbestellung über die Website.\n\nViele Grüße`
+    );
+    window.location.href = `mailto:ESportTalblick@gmail.com?subject=${subject}&body=${body}`;
+  });
+}
+
+const ticketForm = document.getElementById('ticketForm');
+if(ticketForm){
+  ticketForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const block = document.getElementById('ticketBlock').value;
+    const count = document.getElementById('ticketCount').value;
+    const subject = encodeURIComponent('FC Talblick Ticket-Vorbestellung – Sanremo Park');
+    const body = encodeURIComponent(
+      `Hallo FC Talblick,\n\nich möchte fiktiv Tickets vorbestellen.\n\n${block}\nAnzahl: ${count}\n\nHinweis: Dies ist eine Demo-Vorbestellung. Keine Zahlung / kein echter Ticketversand.\n\nViele Grüße`
+    );
+    window.location.href = `mailto:ESportTalblick@gmail.com?subject=${subject}&body=${body}`;
+  });
+}

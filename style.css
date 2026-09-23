@@ -171,3 +171,60 @@ footer{padding:30px 5vw;border-top:1px solid var(--line);display:flex;justify-co
   .season-reset div:nth-child(2){border-right:0}
   .next-teams{gap:15px;flex-direction:column}
 }
+
+.stadium-section{max-width:1280px;margin:0 auto 120px;display:grid;grid-template-columns:1.2fr .8fr;min-height:530px;background:#0d0d0d;border:1px solid var(--line);overflow:hidden}
+.stadium-image{background:url("assets/sanremo-park.jpg") center/cover;min-height:530px;filter:saturate(.75)}
+.stadium-copy{padding:70px 6vw;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,#100607,#090909)}
+.stadium-copy h2{font-size:clamp(62px,7vw,100px);line-height:.8;margin:18px 0}
+.stadium-copy p{color:#aaa;line-height:1.7;max-width:440px}
+.stadium-facts{display:flex;gap:22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:22px 0}
+.stadium-facts span{font-size:7px;letter-spacing:2px;color:#777}
+.stadium-facts b{display:block;font-family:"Barlow Condensed";font-size:20px;color:#fff;margin-bottom:4px}
+.shop-hero{height:62svh;min-height:520px;position:relative;display:flex;align-items:end;overflow:hidden}
+.shop-hero-bg{position:absolute;inset:0;background:url("assets/sanremo-park.jpg") center/cover;filter:saturate(.7)}
+.shop-hero-content{position:relative;z-index:2;padding:0 5vw 75px;max-width:1180px;width:100%;margin:auto}
+.shop-hero h1{font-size:clamp(75px,11vw,145px);line-height:.8;margin:18px 0}
+.shop-hero p{color:#ccc}
+.shop-section{padding-top:90px}
+.ticket-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:30px}
+.ticket-image{background:#111;border:1px solid var(--line);overflow:hidden}
+.ticket-image img{width:100%;height:100%;object-fit:cover;display:block}
+.ticket-order{padding:45px;background:linear-gradient(145deg,#151515,#090909);border:1px solid var(--line)}
+.ticket-order h3{font-family:"Barlow Condensed";font-size:44px;line-height:.9;margin:12px 0}
+.ticket-order p{color:#999;line-height:1.7}
+.ticket-order form{display:flex;flex-direction:column;gap:9px}
+.ticket-order form label{margin-top:8px}
+.ticket-order .btn{margin-top:12px}
+.shop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.shop-product{background:#0e0e0e;border:1px solid #292929;padding:12px;transition:.2s}
+.shop-product:hover{transform:translateY(-4px);border-color:rgba(225,6,19,.6)}
+.shop-product img{width:100%;height:270px;object-fit:cover;display:block;background:#161616}
+.shop-product>div{display:flex;justify-content:space-between;gap:10px;padding:16px 3px 12px}
+.shop-product span{font-size:9px;letter-spacing:1.5px;color:#aaa}
+.shop-product strong{font-family:"Barlow Condensed";font-size:18px}
+.shop-buy{width:100%;border:1px solid #444;background:transparent;color:white;padding:12px;font-size:9px;font-weight:900;letter-spacing:2px;cursor:pointer}
+.shop-buy:hover{background:var(--red);border-color:var(--red)}
+.shop-disclaimer{font-size:10px;color:#666;letter-spacing:.5px;margin-top:20px}
+.shop-cta{max-width:1180px;margin:0 auto 100px;padding:60px 5vw;display:flex;align-items:center;justify-content:space-between;gap:30px;background:linear-gradient(110deg,#170708,#0a0a0a);border:1px solid rgba(225,6,19,.3)}
+.shop-cta h2{font-size:70px;line-height:.8;margin-top:12px}
+.shop-modal{position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(12px);z-index:90;display:none;align-items:center;justify-content:center;padding:25px}
+.shop-modal.open{display:flex}
+.shop-modal-box{position:relative;width:min(520px,100%);background:#101010;border:1px solid #444;padding:42px;box-shadow:0 30px 100px #000}
+.modal-close{position:absolute;right:15px;top:8px;border:0;background:none;color:white;font-size:32px;cursor:pointer}
+.shop-modal h3{font-family:"Barlow Condensed";font-size:50px;line-height:.9;margin:12px 0}
+.shop-modal p{color:#aaa;line-height:1.7}
+#preorderForm{display:flex;flex-direction:column;gap:9px}
+#preorderForm .btn{margin-top:12px}
+@media(max-width:850px){
+  .stadium-section,.ticket-layout{grid-template-columns:1fr}
+  .stadium-image{min-height:360px}
+  .shop-grid{grid-template-columns:1fr 1fr}
+  .shop-cta{display:block}
+  .shop-cta .btn{margin-top:25px}
+}
+@media(max-width:550px){
+  .shop-grid{grid-template-columns:1fr}
+  .shop-product img{height:360px}
+  .stadium-copy{padding:50px 7vw}
+  .stadium-facts{gap:12px}
+}
