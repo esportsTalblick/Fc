@@ -78,6 +78,24 @@ form .btn{border:0}
 .contact-card div:last-child{border:0}
 .contact-card small{display:block;color:#777;font-size:9px;letter-spacing:3px;margin-bottom:8px}
 .contact-card strong,.contact-card a{font-size:18px;font-weight:700}
+.news-popup{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;pointer-events:none;transition:.3s}
+.news-popup.show{opacity:1;visibility:visible;pointer-events:auto}
+.news-popup-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(8px)}
+.news-popup-card{position:relative;z-index:2;width:min(720px,100%);max-height:90svh;overflow:auto;background:linear-gradient(145deg,#171717,#090909);border:1px solid rgba(225,6,19,.65);box-shadow:0 30px 100px rgba(0,0,0,.8);padding:42px}
+.news-popup-card:before{content:"BREAKING";position:absolute;top:0;right:0;background:var(--red);padding:8px 15px;font-size:9px;font-weight:900;letter-spacing:3px}
+.news-popup-close{position:absolute;top:14px;left:14px;width:34px;height:34px;border:1px solid #444;background:#080808;color:#fff;font-size:25px;line-height:1;cursor:pointer;z-index:3}
+.news-popup-kicker{color:#777;font-size:10px;font-weight:900;letter-spacing:3px;margin:20px 0 8px}
+.news-popup-card h2{font-size:clamp(55px,8vw,92px);line-height:.82;margin:0 0 25px}
+.news-popup-card p{color:#bbb;line-height:1.7;font-size:14px}
+.news-popup-card p strong{color:#fff}
+.news-popup-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#333;border:1px solid #333;margin:0 0 24px}
+.news-popup-stats b,.news-popup-stats span{background:#0b0b0b;padding:12px;text-align:center}
+.news-popup-stats b{font-family:"Barlow Condensed";font-size:34px;color:var(--red);padding-bottom:2px}
+.news-popup-stats span{font-size:8px;letter-spacing:2px;color:#777;padding-top:0}
+.news-warning{border-left:3px solid var(--red);padding-left:15px}
+.crisis-news{background:linear-gradient(100deg,rgba(225,6,19,.06),transparent)}
+.news-card.crisis-news h2{color:#fff}
+
 footer{padding:30px 5vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#777;font-size:9px;letter-spacing:3px}
 .loader{position:fixed;inset:0;z-index:100;background:#050505;display:flex;align-items:center;justify-content:center;transition:opacity .7s,visibility .7s}
 .loader.hide{opacity:0;visibility:hidden}
@@ -100,6 +118,10 @@ footer{padding:30px 5vw;border-top:1px solid var(--line);display:flex;justify-co
 .news-card h2{font-size:clamp(34px,5vw,65px);line-height:.9;margin-bottom:20px}
 .news-card p{color:#aaa;line-height:1.75;max-width:780px}
 @media(max-width:800px){
+  .news-popup-card{padding:38px 22px 25px}
+  .news-popup-card h2{font-size:54px}
+  .news-popup-card p{font-size:13px}
+
   .site-header{height:68px}
   .site-header nav{display:none;position:absolute;top:68px;left:0;right:0;background:#080808;padding:20px 5vw;flex-direction:column;gap:18px;border-bottom:1px solid var(--line)}
   .site-header nav.open{display:flex}

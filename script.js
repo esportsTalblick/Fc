@@ -585,3 +585,16 @@ if (insiderGrid) {
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initFanChat);
   else initFanChat();
 })();
+
+
+// AKTUELLE NEWS POPUP
+(function(){
+  const popup=document.getElementById('newsPopup');
+  if(!popup) return;
+  const close=()=>popup.classList.remove('show');
+  const btn=document.getElementById('newsPopupClose');
+  btn?.addEventListener('click',close);
+  popup.querySelector('[data-news-close]')?.addEventListener('click',close);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
+  window.setTimeout(()=>popup.classList.add('show'), 4200);
+})();

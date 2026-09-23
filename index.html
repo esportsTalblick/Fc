@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4.2">
+  <link rel="stylesheet" href="style.css?v=5.1">
 </head>
 <body>
   <div id="loader" class="loader">
@@ -79,11 +79,11 @@
         <h2>WAS WIR<br><em>SIND</em></h2>
       </div>
       <div class="copy">
-        <p class="lead">FC Talblick ist ein Esport-Team im Pro-Clubs-Modus. Seit 2020 spielen wir gemeinsam. Mit dem Start von FC 27 beginnt für uns alles wieder bei null – neue Saison, neue Werte und noch keine offiziellen Spiele.</p>
+        <p class="lead">FC Talblick ist ein Esport-Team im Pro-Clubs-Modus. Seit 2020 spielen wir gemeinsam. Die neue Saison ist gestartet – und der Auftakt ist deutlich härter ausgefallen als erwartet.</p>
         <div class="season-reset">
           <div><strong>FC 27</strong><span>NEUSTART</span></div>
-          <div><strong>0</strong><span>SPIELE</span></div>
-          <div><strong>0</strong><span>SIEGE</span></div>
+          <div><strong>10</strong><span>SPIELE</span></div>
+          <div><strong>1</strong><span>SIEGE</span></div>
           <div><strong>2027</strong><span>SAISONZIEL</span></div>
         </div>
         <p class="small-copy">Die Marktwerte auf dieser Seite sind reine Fun-Schätzungen im Stil eines Fußball-Kaders und stellen keine offiziellen Transfersummen dar.</p>
@@ -175,7 +175,7 @@
       <div class="next-match-card">
         <div class="next-label">NEXT MATCH · FC 27</div>
         <div class="next-teams"><strong>FC TALBLICK</strong><span>VS</span><strong>NOCH OFFEN</strong></div>
-        <div class="next-status">NOCH KEINE SPIELE · SAISONSTART WIRD BEKANNT GEGEBEN</div>
+        <div class="next-status">10 SPIELE · 1 SIEG · 9 NIEDERLAGEN · SAISONSTART VÖLLIG VERKORKST</div>
       </div>
     </section>
 
@@ -217,16 +217,16 @@
         <div class="roster-note">FC 27 · NEUSTART</div>
       </div>
       <div class="match-dashboard">
-        <div><strong>0</strong><span>SPIELE</span></div>
-        <div><strong>0</strong><span>SIEGE</span></div>
+        <div><strong>10</strong><span>SPIELE</span></div>
+        <div><strong>1</strong><span>SIEGE</span></div>
         <div><strong>0</strong><span>REMIS</span></div>
-        <div><strong>0</strong><span>NIEDERLAGEN</span></div>
-        <div><strong>0:0</strong><span>TORE</span></div>
+        <div><strong>9</strong><span>NIEDERLAGEN</span></div>
+        <div><strong>—</strong><span>TORE</span></div>
       </div>
       <div class="match-empty">
         <span class="tag">NEXT MATCH</span>
-        <h3>NOCH KEIN SPIEL ANGESETZT</h3>
-        <p>Mit dem Start von FC 27 beginnt unsere Statistik bei null.</p>
+        <h3>10 SPIELE · 1 SIEG · 9 NIEDERLAGEN</h3>
+        <p>Der Saisonstart ist komplett aus dem Ruder gelaufen. Ein Sieg aus zehn Spielen sorgt bereits für ordentlich Gesprächsstoff rund um den Verein.</p>
       </div>
     </section>
 
@@ -339,7 +339,7 @@
         <h2>FC TALBLICK<br><em>2027</em></h2>
       </div>
       <div>
-        <p>Die Lizenz für 2027 ist gesichert. Die Spieler erhalten ihre Verträge für die kommende Saison. Da FC 27 gerade neu gestartet ist, stehen unsere offiziellen Spielstatistiken aktuell noch bei null.</p>
+        <p><strong>10 Spiele, 1 Sieg, 9 Niederlagen.</strong> Der Saisonstart des FC Talblick ist eine Katastrophe. Hinter den Kulissen wächst der Druck – und die ersten Fragen an den Vorstand werden laut.</p>
         <a class="text-link" href="news.html">ALLE NEWS ANSEHEN →</a>
       </div>
     </section>
@@ -363,6 +363,21 @@
   </footer>
 
   <script src="script.js?v=5.0" defer></script>
+
+  <div class="news-popup" id="newsPopup" role="dialog" aria-modal="true" aria-labelledby="newsPopupTitle">
+    <div class="news-popup-backdrop" data-news-close></div>
+    <div class="news-popup-card">
+      <button class="news-popup-close" id="newsPopupClose" aria-label="News schließen">×</button>
+      <span class="eyebrow">⚠ AKTUELLE NEWS · FC TALBLICK</span>
+      <div class="news-popup-kicker">SAISONSTART · 10 SPIELE</div>
+      <h2 id="newsPopupTitle">FC TALBLICK<br><em>IN DER KRISE</em></h2>
+      <div class="news-popup-stats"><b>10</b><span>SPIELE</span><b>1</b><span>SIEG</span><b>9</b><span>NIEDERLAGEN</span></div>
+      <p><strong>Der Saisonstart ist komplett eskaliert.</strong> Nur ein Sieg aus zehn Spielen. Rund um den Verein werden bereits unangenehme Fragen gestellt: Hat Vorstand Tobias zu viel Geld für Trikots rausgehauen? Oder wurde die Kabine lieber mit Shisha versorgt, statt den Kader auf den Saisonstart vorzubereiten?</p>
+      <p><strong>Kristijan fehlt aktuell komplett.</strong> Der Spieler ist verletzt – wie lange er ausfällt, ist derzeit offen.</p>
+      <p><strong>Zdravko sorgt ebenfalls für Schlagzeilen:</strong> Trotz gelbem Schein wird auf dem Platz eine schwache Leistung nach der anderen abgeliefert. Die Kritik im Umfeld wird lauter.</p>
+      <a class="btn btn-red" href="news.html">VOLLSTÄNDIGE NEWS LESEN →</a>
+    </div>
+  </div>
 
   <aside class="fan-chat" id="fanChat" aria-label="Talblick Live Chat">
     <button class="fan-chat-toggle" id="fanChatToggle">
