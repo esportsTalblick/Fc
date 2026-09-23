@@ -9,7 +9,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5.3">
+  <link rel="stylesheet" href="style.css?v=5.1">
+<style>
+.news-popup-card--latest{max-height:88vh;overflow-y:auto;padding-bottom:24px}
+.news-popup-story{margin-top:22px;padding:18px 0 20px;border-top:1px solid rgba(255,255,255,.16)}
+.news-popup-story-meta{font-size:.68rem;letter-spacing:.22em;color:#9b9b9b;font-weight:700;margin-bottom:8px}
+.news-popup-story h3{font-family:"Barlow Condensed",sans-serif;font-size:clamp(1.35rem,5vw,2rem);line-height:1.02;text-transform:uppercase;margin:0 0 10px;color:#fff}
+.news-popup-story p{margin:0 0 15px;color:#c8c8c8;line-height:1.5;font-size:.9rem}
+.news-popup-read{display:inline-flex!important;width:auto!important;margin-top:2px}
+.news-popup-story--game{padding-bottom:8px}
+@media(max-width:600px){.news-popup-card--latest{width:calc(100vw - 32px);max-height:84vh}.news-popup-story{margin-top:16px;padding-top:15px}.news-popup-story h3{font-size:1.38rem}.news-popup-story p{font-size:.86rem}.news-popup-read{font-size:.72rem!important;padding:10px 13px!important}}
+</style>
 </head>
 <body>
   <div id="loader" class="loader">
@@ -32,8 +42,9 @@
       <a href="#halloffame">HALL OF FAME</a>
       <a href="#bewerbung">BEWERBEN</a>
       <a href="news.html">NEWS</a>
-      <a href="#game">GAME</a>
+      <a href="game.html">GAME</a>
       <a href="shop.html">SHOP</a>
+    <a href="game.html">GAME</a>
       <a href="#community">COMMUNITY</a>
     <a href="#insider">INSIDER</a>
       <a href="#kontakt">KONTAKT</a>
@@ -48,7 +59,6 @@
     <a href="#matchcenter">MATCH CENTER</a>
     <a href="#halloffame">HALL OF FAME</a>
     <a href="#stadion">STADION</a>
-    <a href="#game">GAME</a>
     <a href="shop.html">SHOP</a>
     <a href="#trikot">TRIKOT</a>
     <a href="#community">COMMUNITY</a>
@@ -346,31 +356,9 @@
       </div>
     </section>
 
-    <section id="game" class="section game-promo">
-      <div class="section-title">
-        <span>11</span>
-        <h2>TALBLICK<br><em>GAME</em></h2>
-      </div>
-      <div class="game-promo-card">
-        <div class="game-promo-cover">
-          <img src="assets/street-kings-manager-cover.jpg" alt="FC Talblick's Street Kings Manager – Einrich Edition">
-        </div>
-        <div class="game-promo-copy">
-          <span class="eyebrow">JETZT VERFÜGBAR · MOBILE GAME</span>
-          <h3>FC TALBLICK'S<br><em>STREET KINGS MANAGER</em></h3>
-          <p>Der Talblick Movie Manager ist jetzt verfügbar. Manage deinen Verein, spiele, baue dein Team auf und werde zur Legende.</p>
-          <div class="game-promo-meta">
-            <span>★ EINRICH EDITION</span>
-            <span>USK 0</span>
-          </div>
-          <a class="btn btn-red" href="https://esportstalblick.github.io/StreetKings.beta/" target="_blank" rel="noopener noreferrer">JETZT SPIELEN →</a>
-        </div>
-      </div>
-    </section>
-
     <section id="kontakt" class="section contact">
       <div class="section-title">
-        <span>12</span>
+        <span>11</span>
         <h2>KONTAKT</h2>
       </div>
       <div class="contact-card">
@@ -386,20 +374,29 @@
     <span>EIN TAL · EIN TEAM · EIN ZIEL</span>
   </footer>
 
-  <script src="script.js?v=5.3" defer></script>
+  <script src="script.js?v=5.0" defer></script>
 
   <div class="news-popup" id="newsPopup" role="dialog" aria-modal="true" aria-labelledby="newsPopupTitle">
     <div class="news-popup-backdrop" data-news-close></div>
-    <div class="news-popup-card">
+    <div class="news-popup-card news-popup-card--latest">
       <button class="news-popup-close" id="newsPopupClose" aria-label="News schließen">×</button>
       <span class="eyebrow">⚠ AKTUELLE NEWS · FC TALBLICK</span>
-      <div class="news-popup-kicker">SAISONSTART · 10 SPIELE</div>
-      <h2 id="newsPopupTitle">FC TALBLICK<br><em>IN DER KRISE</em></h2>
-      <div class="news-popup-stats"><b>10</b><span>SPIELE</span><b>1</b><span>SIEG</span><b>9</b><span>NIEDERLAGEN</span></div>
-      <p><strong>Der Saisonstart ist komplett eskaliert.</strong> Nur ein Sieg aus zehn Spielen. Rund um den Verein werden bereits unangenehme Fragen gestellt: Hat Vorstand Tobias zu viel Geld für Trikots rausgehauen? Oder wurde die Kabine lieber mit Shisha versorgt, statt den Kader auf den Saisonstart vorzubereiten?</p>
-      <p><strong>Kristijan fehlt aktuell komplett.</strong> Der Spieler ist verletzt – wie lange er ausfällt, ist derzeit offen.</p>
-      <p><strong>Zdravko sorgt ebenfalls für Schlagzeilen:</strong> Trotz gelbem Schein wird auf dem Platz eine schwache Leistung nach der anderen abgeliefert. Die Kritik im Umfeld wird lauter.</p>
-      <a class="btn btn-red" href="news.html">VOLLSTÄNDIGE NEWS LESEN →</a>
+      <div class="news-popup-kicker">NEUE MELDUNGEN · HEUTE</div>
+      <h2 id="newsPopupTitle">2 NEUE<br><em>NEWS</em></h2>
+
+      <article class="news-popup-story">
+        <div class="news-popup-story-meta">DRINGENDE PRESSEKONFERENZ · SPORT</div>
+        <h3>Vorstand Tobias Erb zieht die Reißleine – Coach nach neun Niederlagen aus zehn Spielen entlassen</h3>
+        <p>Beim FC Talblick wurde kurzfristig eine Pressekonferenz einberufen. Der Vorstand reagiert auf die sportliche Krise und kündigt Kader- sowie taktische Veränderungen an.</p>
+        <a class="btn btn-red news-popup-read" href="news.html">WEITERLESEN →</a>
+      </article>
+
+      <article class="news-popup-story news-popup-story--game">
+        <div class="news-popup-story-meta">NEU · TALBLICK MOVIE MANAGER</div>
+        <h3>FC Talblick’s Street Kings Manager – Einrich Edition jetzt verfügbar</h3>
+        <p>Der neue Manager startet: Verein führen, Spiele bestreiten, den Kader aufbauen und zur Legende werden.</p>
+        <a class="btn btn-red news-popup-read" href="https://esportstalblick.github.io/StreetKings.beta/" target="_blank" rel="noopener">WEITERLESEN →</a>
+      </article>
     </div>
   </div>
 
